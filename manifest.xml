@@ -70,9 +70,9 @@
         <bt:Url id="Taskpane.Url" DefaultValue="https://my-add-in.vercel.app/taskpane.html"/>
       </bt:Urls>
       <bt:ShortStrings>
-        <bt:String id="GetStarted.Title" DefaultValue="Get started with your sample add-in!"/>
-        <bt:String id="CommandsGroup.Label" DefaultValue="Commands Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Show Taskpane"/>
+        <bt:String id="GetStarted.Title" DefaultValue="This is the changed add-in!"/>
+        <bt:String id="CommandsGroup.Label" DefaultValue="My AddIn Group"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Display Taskpane"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."/>
