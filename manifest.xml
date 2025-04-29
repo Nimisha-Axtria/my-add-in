@@ -72,7 +72,7 @@
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="This is the changed add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="My AddIn Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Display Taskpane"/>
+        <bt:String id="TaskpaneButton.Label" DefaultValue="Go to Taskpane"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."/>
