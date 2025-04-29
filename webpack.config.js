@@ -58,6 +58,11 @@ module.exports = async (env, options) => {
         template: "./src/taskpane/taskpane.html",
         chunks: ["polyfill", "taskpane"],
       }),
+      new HtmlWebpackPlugin({
+        filename: "index.html", // this is what Vercel looks for
+        template: "./src/taskpane/taskpane.html", // use same template
+        chunks: ["polyfill", "taskpane"],
+      }),
       new CopyWebpackPlugin({
         patterns: [
           {
@@ -68,11 +73,9 @@ module.exports = async (env, options) => {
             from: "manifest*.xml",
             to: "[name]" + "[ext]",
             transform(content) {
-              if (dev) {
-                return content;
-              } else {
-                return content.toString().replace(new RegExp(urlDev, "g"), urlProd);
-              }
+              return dev
+                ? content
+                : content.toString().replace(new RegExp(urlDev, "g"), urlProd);
             },
           },
         ],
