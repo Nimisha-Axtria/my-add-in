@@ -20,43 +20,18 @@
 <body class="ms-font-m ms-welcome ms-Fabric">
     <header class="ms-welcome__header ms-bgColor-neutralLighter">
         <img width="90" height="90" src="../../assets/logo-filled.png" alt="Contoso" title="Contoso" />
-        <h1 class="ms-font-su">Let's get started</h1>
+        <h1 class="ms-font-su">Excel Add-in Trigger</h1>
     </header>
 
-    <section id="sideload-msg" class="ms-welcome__main">
-        <h2 class="ms-font-xl">
-            Please <a target="_blank" href="https://learn.microsoft.com/office/dev/add-ins/testing/test-debug-office-add-ins#sideload-an-office-add-in-for-testing">sideload</a> your add-in to see app body.
-        </h2>
-    </section>
-
     <main id="app-body" class="ms-welcome__main" style="display: none;">
-        <h2 class="ms-font-xl">Discover what Office Add-ins can do for you today!</h2>
-        <ul class="ms-List ms-welcome__features">
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Ribbon ms-font-xl"></i>
-                <span class="ms-font-m">Achieve more with Office integration</span>
-            </li>
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Unlock ms-font-xl"></i>
-                <span class="ms-font-m">Unlock features and functionality</span>
-            </li>
-            <li class="ms-ListItem">
-                <i class="ms-Icon ms-Icon--Design ms-font-xl"></i>
-                <span class="ms-font-m">Create and visualize like a pro</span>
-            </li>
-        </ul>
-        <p class="ms-font-l">Modify the source files, then click <b>Change color</b>.</p>
-        <div role="button" id="run" class="ms-welcome__action ms-Button ms-Button--hero ms-font-xl">
-            <span class="ms-Button-label">Change Cell color</span>
-        </div>
-        <p><label id="item-subject"></label></p>
+        <p class="ms-font-l">Waiting for trigger in cell <b>Z1</b>...</p>
     </main>
 
     <script>
         Office.onReady(() => {
             document.getElementById("app-body").style.display = "block";
 
-            // Start polling for trigger every 2 seconds
+            // Start polling every 2 seconds
             setInterval(checkForTrigger, 2000);
         });
 
@@ -69,7 +44,7 @@
 
                 const trigger = triggerCell.values[0][0];
                 if (trigger === "RunColorChange") {
-                    await runColorChange(sheet);
+                    await runColorChange(context);
                     triggerCell.values = [[""]];
                     await context.sync();
                 }
@@ -78,9 +53,13 @@
             });
         }
 
-        async function runColorChange(sheet) {
-            const range = sheet.getRange("A1:C1");
-            range.format.fill.color = "yellow";
+        async function runColorChange(context) {
+            const selectedRange = context.workbook.getSelectedRange();
+            selectedRange.load(["rowCount", "columnCount"]);
+            await context.sync();
+
+            const isSingleCell = selectedRange.rowCount === 1 && selectedRange.columnCount === 1;
+            selectedRange.format.fill.color = isSingleCell ? "green" : "yellow";
         }
     </script>
 </body>
