@@ -1,10 +1,11 @@
 /* global Excel, Office */
 
-Office.onReady(() => {
-  console.log("Office is ready");
-
-  // Optional: Only run if you want polling logic when taskpane is shown
-  startPollingForTrigger();
+Office.onReady((info) => {
+  if (info.host === Office.HostType.Excel) {
+    document.getElementById("app-body").style.display = "block";
+    // Now Excel object is ready to be used!
+    startPollingForTrigger();
+  }
 });
 
 /**
