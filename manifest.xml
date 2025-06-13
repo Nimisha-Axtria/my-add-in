@@ -37,7 +37,7 @@
                   <bt:Image size="32" resid="Icon.32x32"/>
                   <bt:Image size="80" resid="Icon.80x80"/>
                 </Icon>
-                <Control xsi:type="Button" id="TaskpaneButton">
+                <!-- <Control xsi:type="Button" id="TaskpaneButton">
                   <Label resid="TaskpaneButton.Label"/>
                   <Supertip>
                     <Title resid="TaskpaneButton.Label"/>
@@ -51,6 +51,22 @@
                   <Action xsi:type="ShowTaskpane">
                     <TaskpaneId>ButtonId1</TaskpaneId>
                     <SourceLocation resid="Taskpane.Url"/>
+                  </Action>
+                </Control> -->
+                <!-- NEW button to run code silently -->
+                <Control xsi:type="Button" id="RunTriggerButton">
+                  <Label resid="RunTriggerButton.Label"/>
+                  <Supertip>
+                    <Title resid="RunTriggerButton.Label"/>
+                    <Description resid="RunTriggerButton.Tooltip"/>
+                  </Supertip>
+                  <Icon>
+                    <bt:Image size="16" resid="Icon.16x16"/>
+                    <bt:Image size="32" resid="Icon.32x32"/>
+                    <bt:Image size="80" resid="Icon.80x80"/>
+                  </Icon>
+                  <Action xsi:type="ExecuteFunction">
+                    <FunctionName>RunColorChange</FunctionName>
                   </Action>
                 </Control>
               </Group>
@@ -67,16 +83,19 @@
       </bt:Images>
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
-        <bt:Url id="Taskpane.Url" DefaultValue="https://my-add-in.vercel.app/taskpane.html"/>
+        <!-- <bt:Url id="Taskpane.Url" DefaultValue="https://my-add-in.vercel.app/taskpane.html"/> -->
+        <bt:Url id="FunctionFile.Url" DefaultValue="https://my-add-in.vercel.app/commands.js"/>
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="This is the changed add-in!"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="My AddIn Group"/>
-        <bt:String id="TaskpaneButton.Label" DefaultValue="Go to Taskpane"/>
+        <!-- <bt:String id="TaskpaneButton.Label" DefaultValue="Go to Taskpane"/> -->
+        <bt:String id="RunTriggerButton.Label" DefaultValue="Run VBA Trigger"/>
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."/>
-        <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/>
+        <!-- <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Show a Taskpane"/> -->
+        <bt:String id="RunTriggerButton.Tooltip" DefaultValue="Load"/>
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
