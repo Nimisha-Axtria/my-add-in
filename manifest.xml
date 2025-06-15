@@ -1,5 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0" xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="TaskPaneApp">
+<OfficeApp xmlns="http://schemas.microsoft.com/office/appforoffice/1.1"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xmlns:bt="http://schemas.microsoft.com/office/officeappbasictypes/1.0"
+           xmlns:ov="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+           xsi:type="TaskPaneApp">
   <Id>e3e7c55b-c381-46c2-99df-ff6c252702e6</Id>
   <Version>1.0.0.0</Version>
   <ProviderName>Contoso</ProviderName>
@@ -19,7 +23,8 @@
     <SourceLocation DefaultValue="https://my-add-in.vercel.app/taskpane.html"/>
   </DefaultSettings>
   <Permissions>ReadWriteDocument</Permissions>
-  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides" xsi:type="VersionOverridesV1_0">
+  <VersionOverrides xmlns="http://schemas.microsoft.com/office/taskpaneappversionoverrides"
+                    xsi:type="VersionOverridesV1_0">
     <Hosts>
       <Host xsi:type="Workbook">
         <DesktopFormFactor>
@@ -29,7 +34,8 @@
             <LearnMoreUrl resid="GetStarted.LearnMoreUrl"/>
           </GetStarted>
           <ExtensionPoint xsi:type="PrimaryCommandSurface">
-            <OfficeTab id="TabHome">
+            <CustomTab id="CustomTab1">
+              <Label resid="CustomTab.Label"/>
               <Group id="CommandsGroup">
                 <Label resid="CommandsGroup.Label"/>
                 <Icon>
@@ -53,24 +59,8 @@
                     <SourceLocation resid="Taskpane.Url"/>
                   </Action>
                 </Control>
-                <!-- NEW button to run code silently
-                <Control xsi:type="Button" id="RunTriggerButton">
-                  <Label resid="RunTriggerButton.Label"/>
-                  <Supertip>
-                    <Title resid="RunTriggerButton.Label"/>
-                    <Description resid="RunTriggerButton.Tooltip"/>
-                  </Supertip>
-                  <Icon>
-                    <bt:Image size="16" resid="Icon.16x16"/>
-                    <bt:Image size="32" resid="Icon.32x32"/>
-                    <bt:Image size="80" resid="Icon.80x80"/>
-                  </Icon>
-                  <Action xsi:type="ExecuteFunction">
-                    <FunctionName>RunColorChange</FunctionName>
-                  </Action>
-                </Control> -->
               </Group>
-            </OfficeTab>
+            </CustomTab>
           </ExtensionPoint>
         </DesktopFormFactor>
       </Host>
@@ -84,18 +74,16 @@
       <bt:Urls>
         <bt:Url id="GetStarted.LearnMoreUrl" DefaultValue="https://go.microsoft.com/fwlink/?LinkId=276812"/>
         <bt:Url id="Taskpane.Url" DefaultValue="https://my-add-in.vercel.app/taskpane.html"/>
-        <!-- <bt:Url id="FunctionFile.Url" DefaultValue="https://my-add-in.vercel.app/commands.js"/> -->
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="This is the changed add-in!"/>
+        <bt:String id="CustomTab.Label" DefaultValue="My Custom Tab"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="My AddIn Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Go to Taskpane"/>
-        <!-- <bt:String id="RunTriggerButton.Label" DefaultValue="Run VBA Trigger"/> -->
       </bt:ShortStrings>
       <bt:LongStrings>
         <bt:String id="GetStarted.Description" DefaultValue="Your sample add-in loaded successfully. Go to the HOME tab and click the 'Show Taskpane' button to get started."/>
         <bt:String id="TaskpaneButton.Tooltip" DefaultValue="Click to Launch"/>
-        <!-- <bt:String id="RunTriggerButton.Tooltip" DefaultValue="Load"/> -->
       </bt:LongStrings>
     </Resources>
   </VersionOverrides>
