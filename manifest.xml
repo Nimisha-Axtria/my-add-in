@@ -77,7 +77,7 @@
       </bt:Urls>
       <bt:ShortStrings>
         <bt:String id="GetStarted.Title" DefaultValue="This is the changed add-in!"/>
-        <bt:String id="CustomTab.Label" DefaultValue="My Custom Tab"/>
+        <bt:String id="CustomTab.Label" DefaultValue="My New Tab"/>
         <bt:String id="CommandsGroup.Label" DefaultValue="My AddIn Group"/>
         <bt:String id="TaskpaneButton.Label" DefaultValue="Go to Taskpane"/>
       </bt:ShortStrings>
